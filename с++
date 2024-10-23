@@ -1,0 +1,27 @@
+с++
+#include <iostream>
+#include <string>
+using namespace std;
+
+string caesar_cipher(string text, int shift) {
+    string result = "";
+    for (char& c : text) {
+        if (isalpha(c)) {
+            char shifted_char = 'a' + (c - 'a' + shift) % 26;
+            char new_char = islower(c) ? shifted_char : toupper(shifted_char);
+            result += new_char;
+        } else {
+            result += c;
+        }
+    }
+    return result;
+}
+
+int main() {
+    string text = "hello";
+    int shift = 3;
+    string encrypted_text = caesar_cipher(text, shift);
+    cout << encrypted_text << endl;
+    
+    return 0;
+}
